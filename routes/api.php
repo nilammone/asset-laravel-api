@@ -1,14 +1,17 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::middleware('auth:sanctum')->get('user', [AuthController::class, 'user']);
 
 // register
 Route::get('register', [AuthController::class, 'register']);
@@ -18,3 +21,9 @@ Route::post('login', [AuthController::class, 'login']);
 
 // logout
 Route::post('logout', [AuthController::class, 'logout']);
+
+// get all user
+Route::get('getalluser', [AuthController::class, 'getalluser']);
+
+//=== employee ===//
+Route::apiResource('employees', EmployeeController::class);
