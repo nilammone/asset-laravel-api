@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FileController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +29,9 @@ Route::get('getalluser', [AuthController::class, 'getalluser']);
 
 //=== employee ===//
 Route::apiResource('employees', EmployeeController::class);
+
+// upload file
+Route::post('upload', [FileController::class, 'upload']);
+
+//=== department ===//
+Route::apiResource('departments', DepartmentController::class);
