@@ -15,6 +15,11 @@ class RoomController extends Controller
         return Room::all();
     }
 
+    public function getRoomOnlyActive()
+    {
+        return Room::where('room_status', '=', 'Active')->get();
+    }
+
 
     public function store(Request $request)
     {

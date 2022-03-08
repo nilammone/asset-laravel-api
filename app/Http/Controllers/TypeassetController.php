@@ -6,6 +6,8 @@ use App\Models\Typeasset;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 
 class TypeassetController extends Controller
 {
@@ -13,6 +15,26 @@ class TypeassetController extends Controller
     public function index()
     {
         return Typeasset::all();
+    }
+
+    public function getTypeassetOnlyActive()
+    {
+        $gettypeactive = Typeasset::where('tass_status', '=', 'Active')->get();
+
+        return $gettypeactive;
+    }
+
+    // get by group asset id
+    public function getByGroupassetId($gid)
+    {
+
+        $getbygid = Typeasset::where('tass_gass_id', '=', $gid)->get();
+
+        // return Response::json([
+        //     'message' => 'success',
+        //     'data' => $getbygid
+        // ]);
+        return $getbygid;
     }
 
 

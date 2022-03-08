@@ -16,7 +16,7 @@ class GroupassetController extends Controller
 
     public function getGroupassetOnlyActive()
     {
-        return Groupasset::all()->where('gass_status', '=', 'Active');
+        return Groupasset::where('gass_status', '=', 'Active')->get();
     }
 
 

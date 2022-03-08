@@ -15,6 +15,11 @@ class BuildingController extends Controller
         return Building::all();
     }
 
+    public function getBuildingOnlyActive()
+    {
+        return Building::where('bd_status', '=', 'Active')->get();
+    }
+
 
     public function store(Request $request)
     {

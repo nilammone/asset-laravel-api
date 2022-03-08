@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\BuildingtypeController;
@@ -52,6 +53,9 @@ Route::apiResource('suppilers', SuppilerController::class);
 //=== room ===//
 Route::apiResource('rooms', RoomController::class);
 
+// get data room active
+Route::get('getRoomOnlyActive', [RoomController::class, 'getRoomOnlyActive']);
+
 // get data join roomtype
 Route::get('getdataJoinroomtypes', [RoomController::class, 'getdataJoinroomtypes']);
 
@@ -60,6 +64,9 @@ Route::apiResource('roomtypes', RoomtypeController::class);
 
 //=== building ===//
 Route::apiResource('buildings', BuildingController::class);
+
+// get data building only active
+Route::get('getBuildingOnlyActive', [BuildingController::class, 'getBuildingOnlyActive']);
 
 // get data join buildingtypes
 Route::get('getdataJoinbuildingtypes', [BuildingController::class, 'getdataJoinbuildingtypes']);
@@ -75,5 +82,17 @@ Route::get('getGroupassetOnlyActive', [GroupassetController::class, 'getGroupass
 //=== typeasset ===//
 Route::apiResource('typeassets', TypeassetController::class);
 
+// get data type active
+Route::get('getTypeassetOnlyActive', [TypeassetController::class, 'getTypeassetOnlyActive']);
+// get data by group asset id
+// Route::get('getByGroupassetId', [TypeassetController::class, 'getByGroupassetId']);
+Route::get('getByGroupassetId/{gid}', [TypeassetController::class, 'getByGroupassetId']);
+
 // get data type join group asset
 Route::get('getdataJoingroupasset', [TypeassetController::class, 'getdataJoingroupasset']);
+
+//=== asset ===//
+Route::apiResource('assets', AssetController::class);
+
+// get join more
+Route::get('getdataJoinmore', [AssetController::class, 'getdataJoinmore']);
