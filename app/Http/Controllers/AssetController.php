@@ -48,6 +48,6 @@ class AssetController extends Controller
     // get data from join all table that relationship
     public function getdataJoinmore()
     {
-        return DB::table('assets')->leftJoin('groupassets', 'assets.asset_group_id', '=', 'groupassets.gass_id')->leftJoin('typeassets', 'assets.asset_type_id', '=', 'typeassets.tass_id')->leftJoin('suppilers', 'assets.asset_sp_id', '=', 'suppilers.sp_id')->leftJoin('rooms', 'assets.asset_room_id', '=', 'rooms.room_id')->leftJoin('buildings', 'assets.asset_building_id', '=', 'buildings.bd_id')->leftJoin('users', 'assets.asset_user_id', '=', 'users.id')->get();
+        return DB::table('assets')->leftJoin('groupassets', 'assets.asset_group_id', '=', 'groupassets.gass_id')->leftJoin('typeassets', 'assets.asset_type_id', '=', 'typeassets.tass_id')->leftJoin('suppilers', 'assets.asset_sp_id', '=', 'suppilers.sp_id')->leftJoin('rooms', 'assets.asset_room_id', '=', 'rooms.room_id')->leftJoin('buildings', 'assets.asset_building_id', '=', 'buildings.bd_id')->leftJoin('mergeuserempdept', 'assets.asset_user_id', '=', 'mergeuserempdept.v1id')->get();
     }
 }
