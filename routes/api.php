@@ -43,6 +43,8 @@ Route::get('getdataJoindepartments', [EmployeeController::class, 'getdataJoindep
 
 // upload file
 Route::post('upload', [FileController::class, 'upload']);
+// delete image
+Route::get('deleteimage/{filename}', [FileController::class, 'deleteimage']);
 
 //=== department ===//
 Route::apiResource('departments', DepartmentController::class);
