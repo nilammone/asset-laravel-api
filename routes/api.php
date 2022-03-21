@@ -34,6 +34,10 @@ Route::post('logout', [AuthController::class, 'logout']);
 
 // get all user
 Route::get('getalluser', [AuthController::class, 'getalluser']);
+// get join employees
+Route::get('getdatajoinemployee', [AuthController::class, 'getdatajoinemployee']);
+// delete user
+Route::get('deleteuser/{userid}', [AuthController::class, 'deleteuser']);
 
 //=== employee ===//
 Route::apiResource('employees', EmployeeController::class);

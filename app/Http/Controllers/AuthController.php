@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -15,7 +16,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'user_emp_id' => $request->user_emp_id,
-            'isAdmin' => '2'
+            'isAdmin' => $request->status
         ]);
 
         return $user;
@@ -55,5 +56,21 @@ class AuthController extends Controller
     public function getalluser()
     {
         return User::all();
+    }
+
+    // get data from join employee
+    public function getdatajoinemployee()
+    {
+        return DB::table('users')->leftJoin('employees', 'users.user_emp_id', '=', 'employees.emp_id')->get();
+    }
+
+    // delete user
+    public function deleteuser($userid)
+    {
+        DB::table('users')
+            ->where('id', $userid)
+            ->delete();
+
+        return ["result: " => "Delete success!"];
     }
 }
