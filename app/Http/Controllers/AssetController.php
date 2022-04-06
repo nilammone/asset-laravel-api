@@ -18,7 +18,7 @@ class AssetController extends Controller
 
     public function store(Request $request)
     {
-        $asset = Asset::create($request->only('asset_no', 'asset_name', 'asset_group_id', 'asset_type_id', 'asset_startdate', 'asset_enddate', 'asset_sp_id', 'asset_room_id', 'asset_building_id', 'asset_user_id', 'asset_status', 'asset_create_at', 'asset_move_at', 'asset_clearing_at'));
+        $asset = Asset::create($request->only('asset_no', 'asset_name', 'asset_group_id', 'asset_type_id', 'asset_startdate', 'asset_enddate', 'asset_sp_id', 'asset_room_id', 'asset_building_id', 'asset_user_id', 'asset_status', 'asset_create_at', 'asset_move_at', 'asset_clearing_at', 'asset_remark'));
 
         return response($asset, Response::HTTP_CREATED);
     }
@@ -32,7 +32,7 @@ class AssetController extends Controller
 
     public function update(Request $request, Asset $asset)
     {
-        $asset->update($request->only('asset_no', 'asset_name', 'asset_group_id', 'asset_type_id', 'asset_startdate', 'asset_enddate', 'asset_sp_id', 'asset_room_id', 'asset_building_id', 'asset_user_id', 'asset_status', 'asset_create_at', 'asset_move_at', 'asset_clearing_at'));
+        $asset->update($request->only('asset_no', 'asset_name', 'asset_group_id', 'asset_type_id', 'asset_startdate', 'asset_enddate', 'asset_sp_id', 'asset_room_id', 'asset_building_id', 'asset_user_id', 'asset_status', 'asset_create_at', 'asset_move_at', 'asset_clearing_at', 'asset_remark'));
 
         return response($asset, Response::HTTP_ACCEPTED);
     }
