@@ -102,3 +102,15 @@ Route::apiResource('assets', AssetController::class);
 
 // get join more
 Route::get('getdataJoinmore', [AssetController::class, 'getdataJoinmore']);
+
+// get join more active by date
+Route::get('getdataJoinmoreActiveByDate/{startDate}/{endDate}', [AssetController::class, 'getdataJoinmoreActiveByDate']);
+
+// get join more active not date
+Route::get('getdataJoinmoreActiveNotDate', [AssetController::class, 'getdataJoinmoreActiveNotDate']);
+
+// get report all
+Route::get('getdataReportAll/{startDate}/{endDate}', [AssetController::class, 'getDataReportAll']);
+
+// get report all not date
+Route::get('getdataReportAllNotDate', [AssetController::class, 'getDataReportAllNotDate']);
