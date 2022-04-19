@@ -10,8 +10,10 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\GroupassetController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomtypeController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\SuppilerController;
 use App\Http\Controllers\TypeassetController;
+use App\Models\Sponsor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,9 @@ Route::post('login', [AuthController::class, 'login']);
 
 // logout
 Route::post('logout', [AuthController::class, 'logout']);
+
+// change password
+Route::post('change_password', [AuthController::class, 'change_password']);
 
 // get all user
 Route::get('getalluser', [AuthController::class, 'getalluser']);
@@ -55,6 +60,9 @@ Route::apiResource('departments', DepartmentController::class);
 
 //=== suppiler ===//
 Route::apiResource('suppilers', SuppilerController::class);
+
+//=== sponsor ===//
+Route::apiResource('sponsors', SponsorController::class);
 
 //=== room ===//
 Route::apiResource('rooms', RoomController::class);
