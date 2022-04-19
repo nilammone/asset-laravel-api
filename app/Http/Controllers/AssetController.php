@@ -120,4 +120,45 @@ class AssetController extends Controller
 
         return $sdata;
     }
+
+    // ==== home dashboard ==== //
+    // count assets
+    public function countAllAssets()
+    {
+        $sdata = DB::table('assets')
+            ->where('asset_status', '=', 'Active')
+            ->selectRaw('count(*) as totalAssets')
+            ->get();
+
+        return $sdata;
+    }
+    // count assets
+    public function countAllBuildings()
+    {
+        $sdata = DB::table('buildings')
+            ->where('bd_status', '=', 'Active')
+            ->selectRaw('count(*) as totalBuilding')
+            ->get();
+
+        return $sdata;
+    }
+    // count rooms
+    public function countAllRooms()
+    {
+        $sdata = DB::table('rooms')
+            ->where('room_status', '=', 'Active')
+            ->selectRaw('count(*) as totalRooms')
+            ->get();
+
+        return $sdata;
+    }
+    // count suppilers
+    public function countAllSuppilers()
+    {
+        $sdata = DB::table('suppilers')
+            ->selectRaw('count(*) as totalSuppilers')
+            ->get();
+
+        return $sdata;
+    }
 }

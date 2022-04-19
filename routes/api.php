@@ -122,3 +122,16 @@ Route::get('getdataReportAll/{startDate}/{endDate}', [AssetController::class, 'g
 
 // get report all not date
 Route::get('getdataReportAllNotDate', [AssetController::class, 'getDataReportAllNotDate']);
+
+// ==== get count dashboard ==== //
+// get all assets
+Route::get('countAllAssets', [AssetController::class, 'countAllAssets']);
+
+// get all buildings
+Route::get('countAllBuildings', [AssetController::class, 'countAllBuildings']);
+
+// get all rooms
+Route::get('countAllRooms', [AssetController::class, 'countAllRooms']);
+
+// get all suppilers
+Route::get('countAllSuppilers', [AssetController::class, 'countAllSuppilers']);
