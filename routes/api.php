@@ -117,6 +117,9 @@ Route::get('getdataJoinmoreActiveByDate/{startDate}/{endDate}', [AssetController
 // get join more active not date
 Route::get('getdataJoinmoreActiveNotDate', [AssetController::class, 'getdataJoinmoreActiveNotDate']);
 
+// get join more active by groupid userid
+Route::get('getdataJoinmoreActiveByUseridGroupid/{userId}/{groupId}', [AssetController::class, 'getdataJoinmoreActiveByUseridGroupid']);
+
 // get report all
 Route::get('getdataReportAll/{startDate}/{endDate}', [AssetController::class, 'getDataReportAll']);
 

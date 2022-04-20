@@ -89,6 +89,23 @@ class AssetController extends Controller
             ->get();
     }
 
+    // get data search by userid groupid
+    public function getdataJoinmoreActiveByUseridGroupid($userId, $groupId)
+    {
+        return DB::table('assets')
+            ->leftJoin('groupassets', 'assets.asset_group_id', '=', 'groupassets.gass_id')
+            ->leftJoin('typeassets', 'assets.asset_type_id', '=', 'typeassets.tass_id')
+            ->leftJoin('suppilers', 'assets.asset_sp_id', '=', 'suppilers.sp_id')
+            ->leftJoin('rooms', 'assets.asset_room_id', '=', 'rooms.room_id')
+            ->leftJoin('buildings', 'assets.asset_building_id', '=', 'buildings.bd_id')
+            ->leftJoin('mergeuserempdept', 'assets.asset_user_id', '=', 'mergeuserempdept.v1id')
+            ->leftJoin('sponsors', 'assets.asset_sps_id', '=', 'sponsors.sps_id')
+            ->where('assets.asset_status', '=', 'Active')
+            ->where('assets.asset_user_id', '=', $userId)
+            ->where('assets.asset_group_id', '=', $groupId)
+            ->get();
+    }
+
     // get data report all
     public function getDataReportAll($startDate, $endDate)
     {
