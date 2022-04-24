@@ -107,20 +107,52 @@ class AssetController extends Controller
     }
 
     // get data report all
-    public function getDataReportAll($startDate, $endDate)
+    public function getDataReportAll($deptname, $startDate, $endDate)
     {
-        $sdata = DB::table('assets')
-            ->leftJoin('groupassets', 'assets.asset_group_id', '=', 'groupassets.gass_id')
-            ->leftJoin('mergeuserempdept', 'assets.asset_user_id', '=', 'mergeuserempdept.v1id')
-            ->where('assets.asset_status', '=', 'Active')
-            ->where('assets.asset_startdate', '>=', $startDate)
-            ->where('assets.asset_startdate', '<=', $endDate)
-            ->groupBy('assets.asset_group_id')
-            ->groupBy('assets.asset_user_id')
-            ->selectRaw('assets.asset_group_id, assets.asset_user_id, count(*) as total_amount, groupassets.gass_name, mergeuserempdept.v1deptname')
-            ->get();
 
-        return $sdata;
+        if ($startDate === 'null' && $endDate === 'null') {
+
+            $sdata = DB::table('assets')
+                ->leftJoin('groupassets', 'assets.asset_group_id', '=', 'groupassets.gass_id')
+                ->leftJoin('mergeuserempdept', 'assets.asset_user_id', '=', 'mergeuserempdept.v1id')
+                ->where('assets.asset_status', '=', 'Active')
+                ->where('mergeuserempdept.v1deptname', '=', $deptname)
+                ->groupBy('assets.asset_group_id')
+                ->groupBy('assets.asset_user_id')
+                ->selectRaw('assets.asset_group_id, assets.asset_user_id, count(*) as total_amount, groupassets.gass_name, mergeuserempdept.v1deptname')
+                ->get();
+
+            return $sdata;
+        } elseif ($deptname === 'null') {
+
+            $sdata = DB::table('assets')
+                ->leftJoin('groupassets', 'assets.asset_group_id', '=', 'groupassets.gass_id')
+                ->leftJoin('mergeuserempdept', 'assets.asset_user_id', '=', 'mergeuserempdept.v1id')
+                ->where('assets.asset_status', '=', 'Active')
+                ->where('assets.asset_startdate', '>=', $startDate)
+                ->where('assets.asset_startdate', '<=', $endDate)
+                ->groupBy('assets.asset_group_id')
+                ->groupBy('assets.asset_user_id')
+                ->selectRaw('assets.asset_group_id, assets.asset_user_id, count(*) as total_amount, groupassets.gass_name, mergeuserempdept.v1deptname')
+                ->get();
+
+            return $sdata;
+        } else {
+
+            $sdata = DB::table('assets')
+                ->leftJoin('groupassets', 'assets.asset_group_id', '=', 'groupassets.gass_id')
+                ->leftJoin('mergeuserempdept', 'assets.asset_user_id', '=', 'mergeuserempdept.v1id')
+                ->where('assets.asset_status', '=', 'Active')
+                ->where('mergeuserempdept.v1deptname', '=', $deptname)
+                ->where('assets.asset_startdate', '>=', $startDate)
+                ->where('assets.asset_startdate', '<=', $endDate)
+                ->groupBy('assets.asset_group_id')
+                ->groupBy('assets.asset_user_id')
+                ->selectRaw('assets.asset_group_id, assets.asset_user_id, count(*) as total_amount, groupassets.gass_name, mergeuserempdept.v1deptname')
+                ->get();
+
+            return $sdata;
+        }
     }
 
     // get data report all not Date

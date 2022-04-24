@@ -121,7 +121,7 @@ Route::get('getdataJoinmoreActiveNotDate', [AssetController::class, 'getdataJoin
 Route::get('getdataJoinmoreActiveByUseridGroupid/{userId}/{groupId}', [AssetController::class, 'getdataJoinmoreActiveByUseridGroupid']);
 
 // get report all
-Route::get('getdataReportAll/{startDate}/{endDate}', [AssetController::class, 'getDataReportAll']);
+Route::get('getdataReportAll/{deptname}/{startDate}/{endDate}', [AssetController::class, 'getDataReportAll']);
 
 // get report all not date
 Route::get('getdataReportAllNotDate', [AssetController::class, 'getDataReportAllNotDate']);

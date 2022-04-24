@@ -48,6 +48,9 @@ class EmployeeController extends Controller
     // get data from employees emp_dept_id join departments dept_id
     public function getdataJoindepartments()
     {
-        return DB::table('employees')->leftJoin('departments', 'employees.emp_dept_id', '=', 'departments.dept_id')->get();
+        return DB::table('employees')
+            ->leftJoin('departments', 'employees.emp_dept_id', '=', 'departments.dept_id')
+            ->leftJoin('users', 'employees.emp_id', '=', 'users.user_emp_id')
+            ->get();
     }
 }
